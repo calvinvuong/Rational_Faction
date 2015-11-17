@@ -1,3 +1,8 @@
+// Team MRE -- Derek Lin, Calvin Vuong
+// APCS1 pd5
+// HW32 -- Irrationality Stops Here
+// 2015-11-18
+
 public class Rational{
     //inst vars
     private int numerator;
@@ -20,7 +25,7 @@ public class Rational{
 	}
 	else{
 	    numerator = p;
-	    denominator = q;\
+	    denominator = q;
 	}
     }
 
