@@ -1,4 +1,4 @@
-// Team MRE -- Derek Lin, Calvin Vuong
+// Team MRE -- Advay Sriram, Calvin Vuong
 // APCS1 pd5
 // HW32 -- Irrationality Stops Here
 // 2015-11-18
