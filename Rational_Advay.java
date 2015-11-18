@@ -65,6 +65,19 @@ public class Rational{
 	this.numerator *= other.denominator; //mult. num by denom
 	this.denominator *= other.numerator; //mut. denom by num.
     }
+    
+    //returns the gcd between numberator and denominator
+    public int gcd (){
+	int a = max (numerator, denominator); //find greater of numerator and denominator
+	int b = min (numerator, denominator); //find lesser of numerator and denominator
+	while (a % b != 0) {
+	    int i = a; //temp sotre a
+	    int f = b; //temp store b
+	    a = b;
+	    b = i % f; //b is remainder of a and b
+	}
+	return b;
+    }
 
     //test cases
     public static void main(String[] args){
