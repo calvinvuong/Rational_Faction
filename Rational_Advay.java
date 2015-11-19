@@ -78,9 +78,32 @@ public class Rational{
 	}
 	return b;
     }
+   
     public void reduce (){
 	numerator = numerator/gcd();
 	denominator = denominator/gcd();
+    }
+    public static int gcd2 (int numerator, int denominator){
+	int a = max (numerator, denominator); //find greater of numerator and denominator
+	int b = min (numerator, denominator); //find lesser of numerator and denominator
+	while (a % b != 0) {
+	    int i = a; //temp store a
+	    int f = b; //temp store b
+	    a = b;
+	    b = i % f; //b is remainder of a and b
+	}
+	return b;
+    }
+    public int compareTo (int num, int denom){
+	if (num == denom){
+	    return 0;
+	}
+	else if (num > denom){
+	    return 1;
+	}
+	else if (denom > num){
+	    return -1;
+	}
     }
 
     //test cases
