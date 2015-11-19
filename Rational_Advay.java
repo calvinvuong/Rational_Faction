@@ -71,12 +71,16 @@ public class Rational{
 	int a = max (numerator, denominator); //find greater of numerator and denominator
 	int b = min (numerator, denominator); //find lesser of numerator and denominator
 	while (a % b != 0) {
-	    int i = a; //temp sotre a
+	    int i = a; //temp store a
 	    int f = b; //temp store b
 	    a = b;
 	    b = i % f; //b is remainder of a and b
 	}
 	return b;
+    }
+    public void reduce (){
+	numerator = numerator/gcd();
+	denominator = denominator/gcd();
     }
 
     //test cases
