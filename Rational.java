@@ -30,7 +30,38 @@ public class Rational{
 	    denominator = q;
 	}
     }
+    
+    //takes 1 Rational as input, returns true if equal to value of calling class
+    public boolean equals(Object other){
+	//First, check for aliasing.
+        boolean retVal = this == rightSide;
+        
+        //Next, if this and input Object are different objects,
+        if ( !retVal ){ //if retVal is false...    
+            //...check to see if input Object is a Tile
+            retVal = rightSide instanceof Rational;
+	    if (retVal){ //if same object...
+		if (this.floatValue() == other.floatValue()){ //if value same...
+		    retVal = true;
+		}
+		else{ //if value not same...
+		    retVal = false;
+		}
+	    }
+	    else{ //if not same object...
+		retVal = false;
+	    }
+	}
+	return retVal;
+    }
+	/*
+                //...and that its state variables match those of this Tile
+                && this._face.equals( ((Rational)rightSide)._face )
+                && this.isFaceUp() == ((Rational)rightSide).isFaceUp();
+	*/
+        return retVal;
 
+    }
     //returns fractional representation of num as string
     public String toString(){
 	return numerator + "/" + denominator;
@@ -114,8 +145,9 @@ public class Rational{
 
     //puts numerator and denominator of calling object into simplest terms
     public void reduce (){
-        numerator = numerator / gcd();
-        denominator = denominator / gcd();
+	int gcd = gcd();
+        numerator = numerator / gcd;
+        denominator = denominator / gcd;
     }
 
     /*this.compareTo(Rational other)
@@ -161,7 +193,6 @@ public class Rational{
 	this.numerator = numerator1 - numerator2;
 	this.denominator = commonDenominator;
     }
-
 
 
     //test cases
