@@ -1,7 +1,7 @@
-// Team MRE -- Advay Sriram, Calvin Vuong
+// Team QQ -- Anton Goretsky, Calvin Vuong
 // APCS1 pd5
-// HW33 -- Do You Even Add, Bro?
-// 2015-11-19
+// HW37 -- Rational Equality
+// 2015-11-25
 
 public class Rational{
     //inst vars
@@ -37,31 +37,19 @@ public class Rational{
         boolean retVal = this == rightSide;
         
         //Next, if this and input Object are different objects,
-        if ( !retVal ){ //if retVal is false...    
-            //...check to see if input Object is a Tile
+        if ( !retVal ){ 
+            //...check to see if input Object is a Rational
             retVal = rightSide instanceof Rational;
 	    if (retVal){ //if same object...
-		if (this.floatValue() == other.floatValue()){ //if value same...
+		if (this.floatValue() == other.floatValue()){ //if values of rational equal
 		    retVal = true;
 		}
-		else{ //if value not same...
-		    retVal = false;
-		}
-	    }
-	    else{ //if not same object...
-		retVal = false;
+		else { retVal = false; } //if values not equal, return value false
 	    }
 	}
 	return retVal;
     }
-	/*
-                //...and that its state variables match those of this Tile
-                && this._face.equals( ((Rational)rightSide)._face )
-                && this.isFaceUp() == ((Rational)rightSide).isFaceUp();
-	*/
-        return retVal;
 
-    }
     //returns fractional representation of num as string
     public String toString(){
 	return numerator + "/" + denominator;
@@ -99,24 +87,7 @@ public class Rational{
     
     //returns the gcd between calling class's numberator and denominator
     public int gcd (){
-	int a; int b; //a is greater than b
-	//set greater of numerator and denominator to a, lesser to b
-	if (numerator >= denominator){
-	    a = numerator;
-	    b = denominator;
-	}
-	else{
-	    a = denominator;
-	    b = numerator;
-	}
-	//euclid's algo
-	while (a % b != 0) {
-	    int i = a; //temp sotre a
-	    int f = b; //temp store b
-	    a = b;
-	    b = i % f; //b is remainder of a and b
-	}
-	return b;
+	return gcd(numerator, denominator); //use static gcd method
     }
 
     //static method gcd
@@ -171,10 +142,10 @@ public class Rational{
     //takes one Rational object specified in parameter and adds it to this Rational object
     public void add(Rational other){
 	int commonDenominator = this.denominator * other.denominator;
-	int numerator1; //numerator of this Rational object, after modificaiton
-	int numerator2; //numerator of other Rational object, after modification
-	numerator1 = this.numerator * other.denominator;
-	numerator2 = other.numerator * this.denominator;
+	//this numerator
+	int numerator1 = this.numerator * other.denominator;
+	//other numerator
+	int numerator2  = other.numerator * this.denominator; 
 	
 	//add rational numbers by summing numerators, keeping common denominator
 	this.numerator = numerator1 + numerator2;
@@ -184,10 +155,10 @@ public class Rational{
     //takes one Rational object specified in parameter and add subtracts it from this Ratinal Object
     public void subtract(Rational other){
 	int commonDenominator = this.denominator * other.denominator;
-	int numerator1; //numerator of this Rational object, after modification
-	int numerator2; //numerator of other Rational object, after modification
-	numerator1 = this.numerator * other.denominator;
-	numerator2 = other.numerator * this.denominator;
+	//this numerator
+	int numerator1 = this.numerator * other.denominator;
+	//toher numerator
+	int numerator2 = other.numerator * this.denominator; 
 
 	//subtract rational numbers by subtracting numerators, keeping common denominator
 	this.numerator = numerator1 - numerator2;
