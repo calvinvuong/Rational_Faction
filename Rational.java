@@ -34,14 +34,14 @@ public class Rational{
     //takes 1 Rational as input, returns true if equal to value of calling class
     public boolean equals(Object other){
 	//First, check for aliasing.
-        boolean retVal = this == rightSide;
+        boolean retVal = this == other;
         
         //Next, if this and input Object are different objects,
         if ( !retVal ){ 
             //...check to see if input Object is a Rational
-            retVal = rightSide instanceof Rational;
+            retVal = other instanceof Rational;
 	    if (retVal){ //if same object...
-		if (this.floatValue() == other.floatValue()){ //if values of rational equal
+		if (this.floatValue() == ((Rational)(other)).floatValue()){ //if values of rational equal
 		    retVal = true;
 		}
 		else { retVal = false; } //if values not equal, return value false
@@ -168,6 +168,18 @@ public class Rational{
 
     //test cases
     public static void main(String[] args){
+	//NEW TESTS HERE
+	Rational a = new Rational(5, 2);
+	Rational b = new Rational(10, 4);
+	Rational c = new Rational(-5, 2);
+	String s = new String("Hi");
+
+	System.out.println(a.equals(b)); //true
+	System.out.println(a.equals(c)); //false
+	System.out.println(b.equals(c)); //false
+	System.out.println(s.equals(a)); //false
+
+	//OLD TESTS BELOW
 	Rational bad = new Rational(3, 0);
 	Rational good = new Rational(3, 5);
 	Rational foo = new Rational(5, 3);
